@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Ulang Tahun</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <!-- Popper.js dan jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <style>
+    /* Global styling untuk body */
+    body {
+      background-color: #EECAD5;
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    .linkvideo{
+      text-decoration: none;
+    }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #6d6875;
+    }
+
+    p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Gaya landing page */
+    .landing-page {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #D1E9F6;
+      padding: 40px;
+    }
+
+    .landing-page img {
+      max-width: 45%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .landing-page .text {
+      flex: 1;
+      padding-left: 40px;
+    }
+
+    .landing-page .text h1 {
+      font-size: 3rem;
+    }
+
+    .landing-page img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Gaya section dengan banyak gambar */
+    .section {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 50px;
+      padding: 20px;
+      background-color: #EECAD5;
+      border-radius: 10px;
+      transition: all 0.3s ease-in-out;
+    }
+    .section img {
+      width: 30%; /* Ukuran gambar lebih kecil */
+      border-radius: 15px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+      margin: 10px;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .section img:hover {
+      transform: scale(1.05);
+    }
+
+    .text {
+      flex: 1;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    /* Gaya parallax scroll */
+    .parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 400px;
+      margin-bottom: 50px;
+      border-radius: 10px;
+    }
+
+    /* Tombol dan gambar pop-up */
+    .popup-image {
+      cursor: pointer;
+      max-width: 45%;
+      height: auto;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
+    }
+    .popup-container{
+      display: flex;
+      justify-content: center;
+    }
+    .popup-image:hover {
+      transform: scale(1.05);
+    }
+
+    /* Modal styling */
+    .modal-content {
+      border-radius: 10px;
+    }
+
+    .modal-header, .modal-footer {
+      border: none;
+    }
+
+    .modal-header .close {
+      font-size: 1.5rem;
+    }
+
+    .btn {
+      background-color: #d4a5a5;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #c08484;
+    }
+
+    /* Footer styling */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #999;
+      font-size: 0.9rem;
+    }
+
+    /* Tombol tersembunyi */
+    .hidden-button {
+      display: none; /* Tersembunyi secara default */
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #d4a5a5;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      transition: background-color 0.3s, opacity 0.3s;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Area hover untuk memunculkan tombol */
+    .hover-area {
+      height: 100px;
+      background-color: transparent;
+      position: relative;
+    }
+
+    /* Tampilkan tombol saat hover di area ini */
+    .hover-area:hover .hidden-button {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Animasi munculnya tombol */
+    .hidden-button:hover {
+      background-color: #c08484;
+    }
+    .logo-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 1000;
+  }
+
+  .logo {
+    width: 100px; /* Sesuaikan ukuran logo */
+    height: auto;
+    border-radius: 50px;
+  }
+  </style>
+</head>
+<body>
+  <div class="logo-container">
+    <img src="download.jpeg" alt="Logo" class="logo">
+  </div>
+  <!-- Bagian Landing Page -->
+  <div class="landing-page">
+    <img src="index.jpg" alt="Foto Teman" width="300px">
+    <div class="text">
+      <h1>Happy Sweet Seventeen Shinelle Auryn Kasim!</h1>
+      <p>Semoga tahun ini menjadi berkat untukmu, bisa diterima di universitas impianmuu mau itu di Canada, Hongkong, Kutub utara, sampee galaksi Magellan (jaraknya 150.000 tahun cahaya dari bimasakti kalo gasalah) dimanapun itu lahh, semoga di sisa tahunmu di kosayu ini menjadi waktu yang paling membahagiakan dan menyenangkan, gada lagi kejadian kejadian tidak mengenakkan kaya di kelas 11, ribut kita kalo sedih sedih lagi, happy terus di mbp, happy menjalankan segala les lesannyaa (kalo jenuh ngomong aja biar takhibur pake andre twerking), makin sayang sama orang tua, makin cantik, makin pinter, makin makin, kurangin begadangnyaa(sudah ada perkembangan kayanya mantap)(gak jadi mantap, berapa hari lu tidur jam 3..), JANGAN LUPA MAKAN, MAKAN YANG BANYAK, bisa baca semua buku impiannya, dapet saham gramed 100% sungguhan, sehat teruss, dapet cowok yang baik jadi prom ada gandengan anjay mabar, menemukan penemuan biotek yang dikenang sepanjang sejarah (amin), dapet pingu sungguhan, bisa teleport ke dunia disney, punya perpustakaan sendiri, bisa terbang, teleportasi, ke isekai ke dunia horimiya, yak mulai ngalor ngidul pokoknya semua yang terbaikklahh. (mengingat ini dikirim jam 12 malam, terimakasih sudah mau membaca)</p>
+    </div>
+  </div>
+
+  <!-- Bagian "How We Met" dengan Banyak Gambar -->
+  <div class="section">
+    <div class="text">
+      <h2>How We Met</h2>
+      <p>Jadi biar ga kosong kosong amat ini web, ini kita ketemu yang paling kuingat kerja kelompok di depan kelas XJ ngomongin genshin sama ukuran kacamata kita yang sama.. iya ga sih?
+        Oiyaa yang paling kuinget lagi waktu buat ppt sama vincen? yang somehow aku dapet fotomu tiktokan terus kamu kaya ngambek WKKWKWKW
+      </p>
+    </div>
+    <div class="section1">
+      <img src="gambar1.jpg" alt="Foto Pertemuan 1">
+      <img src="gambar3.jpg" alt="Foto Pertemuan 2">
+      <img src="image4.jpg" alt="Foto Pertemuan 3">
+    </div>
+    
+  </div>
+
+  <div class="section">
+    <img src="image1.jpg" alt="Foto Kenangan 1">
+    <img src="image2.jpg" alt="Foto Kenangan 2">
+    <img src="image3.jpg" alt="Foto Kenangan 3">
+    <div class="text">
+      <h2>Akhir Kata (Anjay akhir kata)</h2>
+      <p>Terimakasih atas segalanya selama 3 tahun ini, secara langsung atau tidak langsung kehadiranmu berdampak pada kehidupan kita,pertahankan sikap sikap positifnya dan buang negatifnya, maaf kalau ada kesalahan dan kebodohanku di masa lalu, semoga after high school masih terus interaksi (aminn), yak sekian, sekali lagi selamat ulang tahun yang ke 17 aurynn!
+        Jangan lupa <a href="indexcandle.html" style="size: 15px;text-decoration: none;color:#D1E9F6;">make a wish!!!</a>
+      </p>
+    </div>
+    <div class="section1">
+      <img src="image5.jpg" alt="Foto Kenangan 1">
+      <img src="image6.jpg" alt="Foto Kenangan 2">
+      <img src="image7.jpg" alt="Foto Kenangan 3">
+    </div>
+    
+  </div>
+
+  <!-- Bagian Gambar dengan Dua Pop-up -->
+  <div class="popup-container">
+    <!-- Gambar pertama yang pop-up -->
+    <img src="pon.png" alt="Foto Pop-up 1" class="popup-image" data-toggle="modal" data-target="#popupModal1">
+
+
+    
+  </div>
+  <!-- Modal Pop-up 1 -->
+  <div class="modal fade" id="popupModal1" tabindex="-1" aria-labelledby="popupModalLabel1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Pesan Spesial</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Anjay tau gitu lu ini bisa dipencet, request yang masuk akal plis</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Pop-up 2 -->
+  <div class="modal fade" id="popupModal2" tabindex="-1" aria-labelledby="popupModalLabel2" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Kenangan Spesial</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Momen-momen spesial kita akan selalu ada dalam ingatan. Terima kasih sudah ada di sini.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn" data-dismiss="modal">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Area hover untuk memunculkan tombol -->
+  <div class="hover-area" >
+    <!-- Tombol tersembunyi -->
+    <button class="hidden-button"><a href="https://drive.google.com/drive/folders/11x5GNQd33bgSZwnpWHVOcTe2VARlhdGd?usp=sharing" style="text-decoration: none;color: #333;" >Pencet aku donggggggg!</a></button>
+  </div>
+
+</body>
+</html>
